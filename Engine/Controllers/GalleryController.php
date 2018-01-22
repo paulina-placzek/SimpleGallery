@@ -2,7 +2,7 @@
 // include "./Models/GalleryItemModel.php"
 include "./Models/GalleryModel.php";
 class GalleryController{
-    private const $___debug___ = true;
+    // private const $___debug___ = true;
     private $__db_host, $__db_user, $__db_pass, $__db_name;
     private $__db_connection, $__db_connection_error;
     private $__gallery_model;
@@ -47,18 +47,18 @@ class GalleryController{
         if ($result->num_rows > 0) {
             $__gallery_model = new GalleryModel();
             while($row = $result->fetch_assoc()) {
-                if($___debug___){
-                    echo "id: " . $row["id"]. " - Name: " . $row["name"]. "<br>";
-                    echo "<pre>".$row["description"]."</pre><hr>";
-                }
+                // if($___debug___){
+                //     echo "id: " . $row["id"]. " - Name: " . $row["name"]. "<br>";
+                //     echo "<pre>".$row["description"]."</pre><hr>";
+                // }
                 $item = new GalleryItemModel($row["imgFile"],$row["name"],$row["description"]);
                 $__gallery_model->insert($item);
             }
-        } else {
-            if($___debug___){
-                echo "0 results";
-            }
-        }
+        // } else {
+        //     if($___debug___){
+        //         echo "0 results";
+        //     }
+        // }
         $__db_connection->close();
 
         return true;
