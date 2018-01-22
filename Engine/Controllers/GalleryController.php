@@ -71,5 +71,17 @@ class GalleryController{
     public function gallery(){
         return $__gallery_model;
     }
+
+    public function addNewItemToDatabase($newItem){
+        $__db_connection = new mysqli($__db_host, $__db_user, $__db_pass, $__db_name);
+        if ($__db_connection->connect_error) {
+            $__db_connection_error = $__db_connection->error_get_last;
+            return false;
+        }
+
+        $sql = "SELECT * FROM GalleryItems";
+        $result = $__db_connection->query($sql);
+        return $result;
+    }
 }
 ?>

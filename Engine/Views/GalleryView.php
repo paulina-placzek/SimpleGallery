@@ -1,14 +1,16 @@
 <?php
-include "../Controllers/GalleryController.php";
+include "./Controllers/GalleryController.php";
+include "./Models/DataBaseConfigModel.php"
 
 class GalleryView{
     function _cunstruct(){
-        $__gallery_controller = new ("_db_host", "_db_user", "_db_pass", "ZOZMB_PERSONAL_GALLERY_GLOBAL_TEST");
-        if(!$db_connection_error->initialize()){
-            echo '<div class="gallery_global_test_result">'.$__gallery_controller->db_connection_error().'</div>';
+        $__db_config = new DataBaseConfigModel();
+        $__gallery_controller = new GalleryController($__db_config->host(), $__db_config->user(), $__db_config->pass(), $__db_config->name());
+        if(!$__gallery_controller->initialize()){
+            echo '<div class="gallery_error">'.$__gallery_controller->db_connection_error().'</div>';
         }
         else{
-            $__gallery = $db_connection_error->gallery();
+            $__gallery = $__gallery_controller->gallery();
             foreach ($__gallery as $item) {
                 echo '<div class="gallery-item"><div class="image">';
                 echo $item->img_path();
