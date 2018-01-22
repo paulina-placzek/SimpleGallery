@@ -15,27 +15,27 @@ class GalleryController{
     }
 
     public function initialize(){
-        $__db_connection = new mysqli($__db_host, $__db_user, $__db_pass);
-        if ($__db_connection->connect_error) {
-            $__db_connection_error = $__db_connection->error_get_last;
-            return false;
-        }
+        // $__db_connection = new mysqli($__db_host, $__db_user, $__db_pass);
+        // if ($__db_connection->connect_error) {
+        //     $__db_connection_error = $__db_connection->error_get_last;
+        //     return false;
+        // }
+        //
+        // $sql = "CREATE DATABASE IF NOT EXISTS ".$__db_name;
+        // if ($__db_connection->query($sql) === TRUE) {
+        //     $sql = "CREATE TABLE GalleryItems (id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,name VARCHAR(64) NOT NULL,imgfile VARCHAR(64) NOT NULL,description VARCHAR(2048) NOT NULL)";
+        //     if ($__db_connection->query($sql) === FALSE) {
+        //         $__db_connection_error = $__db_connection->error_get_last;
+        //         return false;
+        //     }
+        // }
+        // else{
+        //     //do srawdzenia co i kiedy zwraca $sql = "CREATE DATABASE IF NOT EXISTS ZOZMB_PERSONAL_GALLERY";
+        //     $__db_connection_error = $__db_connection->error_get_last;
+        //     return false;
+        // }
+        // $__db_connection->close();
 
-        $sql = "CREATE DATABASE IF NOT EXISTS ".$__db_name;
-        if ($__db_connection->query($sql) === TRUE) {
-            $sql = "CREATE TABLE GalleryItems (id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,name VARCHAR(64) NOT NULL,imgfile VARCHAR(64) NOT NULL,description VARCHAR(2048) NOT NULL)";
-            if ($__db_connection->query($sql) === FALSE) {
-                $__db_connection_error = $__db_connection->error_get_last;
-                return false;
-            }
-        }
-        else{
-            //do srawdzenia co i kiedy zwraca $sql = "CREATE DATABASE IF NOT EXISTS ZOZMB_PERSONAL_GALLERY";
-            $__db_connection_error = $__db_connection->error_get_last;
-            return false;
-        }
-
-        $__db_connection->close();
         $__db_connection = new mysqli($__db_host, $__db_user, $__db_pass, $__db_name);
         if ($__db_connection->connect_error) {
             $__db_connection_error = $__db_connection->error_get_last;
