@@ -64,6 +64,10 @@ class GalleryController{
         return true;
     }
 
+    public function db_connection_error(){
+        return $__db_connection_error;
+    }
+
     public function gallery(){
         return $__gallery_model;
     }
