@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="Stylesheet" type="text/css" href="style.css" />
+</head>
+
+<body>
+    <div class="gallery-container">
+        <!-- (div.galery-item>img[src="https://picsum.photos/100/70/?random"]+div.name+div.description)*50 -->
+        <div class="galery-item">
+            <div class="image" style="background-image:url('https://picsum.photos/100/70/?random');">
+            </div>
+            <div class="name"></div>
+            <div class="description"></div>
+        </div>
+        <div class="galery-item">
+            <div class="image" style="background-image:url('https://picsum.photos/100/70/?random');"></div>
+            <div class="name"></div>
+            <div class="description"></div>
+        </div>
+        <div class="galery-item">
+            <div class="image" style="background-image:url('https://picsum.photos/100/70/?random');"></div>
+            <div class="name"></div>
+            <div class="description"></div>
+        </div>
+        <div class="galery-item">
+            <div class="image" style="background-image:url('https://picsum.photos/100/70/?random');"></div>
+            <div class="name"></div>
+            <div class="description"></div>
+        </div>
+        <div class="galery-item">
+            <div class="image" style="background-image:url('https://picsum.photos/100/70/?random');"></div>
+            <div class="name"></div>
+            <div class="description"></div>
+        </div>
+        <div class="galery-item">
+            <div class="image" style="background-image:url('https://picsum.photos/100/70/?random');"></div>
+            <div class="name"></div>
+            <div class="description"></div>
+        </div>
+        <div class="galery-item">
+            <div class="image" style="background-image:url('https://picsum.photos/100/70/?random');"></div>
+            <div class="name"></div>
+            <div class="description"></div>
+        </div>
+        <div class="galery-item">
+            <div class="image" style="background-image:url('https://picsum.photos/100/70/?random');"></div>
+            <div class="name"></div>
+            <div class="description"></div>
+        </div>
+        <div class="galery-item">
+            <div class="image" style="background-image:url('https://picsum.photos/100/70/?random');"></div>
+            <div class="name"></div>
+            <div class="description"></div>
+        </div>
+        <div class="galery-item">
+            <div class="image" style="background-image:url('https://picsum.photos/100/70/?random');"></div>
+            <div class="name"></div>
+            <div class="description"></div>
+        </div>
+        <div class="galery-item">
+            <div class="image" style="background-image:url('https://picsum.photos/100/70/?random');"></div>
+            <div class="name"></div>
+            <div class="description"></div>
+        </div>
+        <div class="galery-item">
+            <div class="image" style="background-image:url('https://picsum.photos/100/70/?random');"></div>
+            <div class="name"></div>
+            <div class="description"></div>
+        </div>
+        <div class="galery-item">
+            <div class="image" style="background-image:url('https://picsum.photos/100/70/?random');"></div>
+            <div class="name"></div>
+            <div class="description"></div>
+        </div>
+        <div class="galery-item">
+            <div class="image" style="background-image:url('https://picsum.photos/100/70/?random');"></div>
+            <div class="name"></div>
+            <div class="description"></div>
+        </div>
+        <div class="galery-item">
+            <div class="image" style="background-image:url('https://picsum.photos/100/70/?random');"></div>
+            <div class="name"></div>
+            <div class="description"></div>
+        </div>
+        <div class="galery-item">
+            <div class="image" style="background-image:url('https://picsum.photos/100/70/?random');"></div>
+            <div class="name"></div>
+            <div class="description"></div>
+        </div>
+        <div class="galery-item">
+            <div class="image" style="background-image:url('https://picsum.photos/100/70/?random');"></div>
+            <div class="name"></div>
+            <div class="description"></div>
+        </div>
+        <div class="galery-item">
+            <div class="image" style="background-image:url('https://picsum.photos/100/70/?random');"></div>
+            <div class="name"></div>
+            <div class="description"></div>
+        </div>
+        <div class="galery-item">
+            <div class="image" style="background-image:url('https://picsum.photos/100/70/?random');"></div>
+            <div class="name"></div>
+            <div class="description"></div>
+        </div>
+        <div class="galery-item">
+            <div class="image" style="background-image:url('https://picsum.photos/100/70/?random');"></div>
+            <div class="name"></div>
+            <div class="description"></div>
+        </div>
+        
+
+    </div>
+    <div class="shadow-cover" id="visible-item-background"></div>
+
+
+
+    <script>
+        var divGallery = document.querySelectorAll(".galery-item");
+        var containerGallery = document.querySelector(".gallery-container");
+
+        function visibleItemBackgroundEventHandler(e){
+            document.getElementById('visible-item-background').removeEventListener("click",visibleItemBackgroundEventHandler);
+                        document.getElementById('visible-item-background').style.visibility = "hidden";
+                        containerGallery.removeChild(document.getElementById('visible-gallery-item'));
+        }
+
+        for (let i = 0; i < divGallery.length; ++i) {
+
+            divGallery[i].addEventListener("click", function (e) {
+                var s = e.target;
+                if(s.classList.contains('image')){
+                    s = s.parentNode;
+                }
+                var sender = s.cloneNode(true);
+
+                if(!sender.classList.contains('see')){
+                    document.getElementById('visible-item-background').style.visibility = "visible";
+
+                    sender.classList.remove('galery-item');
+                    sender.classList.add('see');
+                    sender.id = "visible-gallery-item";
+                    containerGallery.appendChild(sender);
+                    
+                    document.getElementById('visible-item-background').addEventListener("click",visibleItemBackgroundEventHandler);
+                }
+                
+            })
+        }
+    </script>
+</body>
+
+</html>
